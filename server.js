@@ -8,13 +8,13 @@ const server = http.createServer((request, response) => {
     let domain = request.headers.host
 
     let resultObj = {
-      result: result.toString() + ' | ' + domain
+      browser: result.toString()
     }
 
-      response.setHeader('Content-Type', 'text/javascript');
-      response.setHeader('Access-Control-Allow-Origin','*');
+    response.setHeader('Content-Type', 'text/javascript');
+    response.setHeader('Access-Control-Allow-Origin','*');
 
-      response.end(JSON.stringify(resultObj));
+    response.end(JSON.stringify(resultObj));
 
 });
 
