@@ -13,7 +13,7 @@ const server = http.createServer((request, response) => {
 
     if (callback) {
       response.setHeader('Content-Type', 'text/javascript');
-      response.end(callback + '(' + resultObj + ')');
+      response.end(callback + '(' + JSON.stringify(resultObj) + ')');
     } else {
       response.end(JSON.stringify(resultObj));
     }
