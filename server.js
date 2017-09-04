@@ -3,7 +3,6 @@ const http = require('http');
 const port = process.env.PORT || 3000;
 
 const server = http.createServer((request, response) => {
-    const callback = request.query && request.query.callback
     const result = new WhichBrowser(request.headers)
     let domain = request.domain
 
@@ -11,13 +10,10 @@ const server = http.createServer((request, response) => {
       result: result.toString() + ' | ' + domain
     }
 
-    if (callback) {
       response.setHeader('Content-Type', 'text/javascript');
-      response.end(callback + '(' + JSON.stringify(resultObj) + ')');
-    } else {
+      response.setHeader('Access-Control-Allow-Origin','*');
+
       response.end(JSON.stringify(resultObj));
-    }
-    
 
 });
 
