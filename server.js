@@ -4,9 +4,15 @@ const port = process.env.PORT || 3000;
 
 const server = http.createServer((request, response) => {
     const result = new WhichBrowser(request.headers)
-    let resultString = result.toString()
     let domain = request.domain
-    response.end("{result: " + resultString + " | " + domain + "}")
+
+    let resultObj = {
+      result: result.toString() + " | " + domain
+    }
+    
+    response.setHeader('Content-Type', 'application/json');
+    response.end(JSON.stringify(resultObj))
+
 });
 
 server.listen(port, (err) => {
