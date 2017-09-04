@@ -6,7 +6,7 @@ const server = http.createServer((request, response) => {
     const result = new WhichBrowser(request.headers)
     let resultString = result.toString()
     let domain = request.domain
-    response.end(resultString + ' | ' + domain)
+    response.end("{result: " + resultString + ' | ' + domain + "}")
 });
 
 server.listen(port, (err) => {
