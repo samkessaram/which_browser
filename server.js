@@ -4,7 +4,8 @@ const port = process.env.PORT || 3000;
 
 const server = http.createServer((request, response) => {
     const result = new WhichBrowser(request.headers)
-    let domain = request.domain
+
+    let domain = request.headers.host
 
     let resultObj = {
       result: result.toString() + ' | ' + domain
